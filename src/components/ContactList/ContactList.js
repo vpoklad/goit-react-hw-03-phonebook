@@ -1,5 +1,6 @@
 import ContactItem from './ContactItem';
 import s from './ContactList.module.css';
+import PropTypes from 'prop-types';
 export default function ContactList({ contacts, handleDelItem }) {
   return (
     <>
@@ -16,3 +17,8 @@ export default function ContactList({ contacts, handleDelItem }) {
     </>
   );
 }
+
+ContactList.propTypes = {
+  contacts: PropTypes.array,
+  handleDelItem: PropTypes.func,
+};

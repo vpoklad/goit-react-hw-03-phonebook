@@ -1,6 +1,7 @@
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import s from './ContactList.module.css';
+import PropTypes from 'prop-types';
 export default function ContactItem({ contact, handleDelItem }) {
   return (
     <li className={s.item}>
@@ -17,3 +18,11 @@ export default function ContactItem({ contact, handleDelItem }) {
     </li>
   );
 }
+ContactItem.propTypes = {
+  contact: PropTypes.shape({
+    name: PropTypes.string,
+    number: PropTypes.string,
+    id: PropTypes.string,
+  }),
+  handleDelItem: PropTypes.func,
+};

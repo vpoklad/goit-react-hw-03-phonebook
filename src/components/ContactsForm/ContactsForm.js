@@ -1,10 +1,15 @@
 import { Component } from 'react';
 import { v4 as uuid } from 'uuid';
+import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import s from './ContactsForm.module.css';
 
 export default class ContactsForm extends Component {
+  static propTypes = {
+    addNewContact: PropTypes.func,
+  };
+
   state = {
     name: '',
     number: '',

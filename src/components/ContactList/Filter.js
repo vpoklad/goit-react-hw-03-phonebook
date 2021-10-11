@@ -1,4 +1,5 @@
 import TextField from '@mui/material/TextField';
+import PropTypes from 'prop-types';
 export default function Filter({ value = ' ', handlChange }) {
   return (
     <>
@@ -13,3 +14,7 @@ export default function Filter({ value = ' ', handlChange }) {
     </>
   );
 }
+Filter.propTypes = {
+  value: PropTypes.string,
+  handlChange: PropTypes.func,
+};
