@@ -12,7 +12,6 @@ export default class ContactsForm extends Component {
       name: '',
       number: '',
     });
-    console.log('reset');
   };
   handleInput = e => {
     const name = e.target.name;

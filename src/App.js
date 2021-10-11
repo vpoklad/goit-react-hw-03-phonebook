@@ -17,12 +17,20 @@ class App extends Component {
     ],
     filter: '',
   };
+
   onSubmitForm = contact => {
-    this.setState(prev => {
-      return {
-        contacts: [...prev.contacts, contact],
-      };
-    });
+    const existContact = this.state.contacts.some(
+      el => el.name.toLowerCase() === contact.name.toLowerCase(),
+    );
+    if (existContact) {
+      return alert(`this contact already exists`);
+    } else {
+      this.setState(prev => {
+        return {
+          contacts: [...prev.contacts, contact],
+        };
+      });
+    }
   };
 
   handlFilterChange = e => {
@@ -35,23 +43,21 @@ class App extends Component {
     );
   };
   handleDelItem = id => {
-    console.log('del press');
     this.setState(prev => ({
       contacts: prev.contacts.filter(contact => contact.id !== id),
     }));
   };
   render() {
+    const { onSubmitForm, handlFilterChange, filterContacts, handleDelItem } =
+      this;
     return (
       <div className="app">
         <h1>Phonebook</h1>
-        <ContactsForm addNewContact={this.onSubmitForm} />
-        <Filter
-          value={this.state.filter}
-          handlChange={this.handlFilterChange}
-        />
+        <ContactsForm addNewContact={onSubmitForm} />
+        <Filter value={this.state.filter} handlChange={handlFilterChange} />
         <ContactList
-          contacts={this.filterContacts()}
-          handleDelItem={this.handleDelItem}
+          contacts={filterContacts()}
+          handleDelItem={handleDelItem}
         />
       </div>
     );
