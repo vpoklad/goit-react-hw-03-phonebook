@@ -1,19 +1,30 @@
 // import './App.css';
 
 import { Component } from 'react/cjs/react.production.min';
-import { v4 as uuid } from 'uuid';
+// import { v4 as uuid } from 'uuid';
+
+import ContactsForm from './components/ContactsForm/ContactsForm';
+import ContactList from './components/ContactList/ContactList';
 
 class App extends Component {
   state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
+    contacts: [],
+    name: '',
+  };
+  onSubmitForm = contact => {
+    this.setState(prev => {
+      return {
+        contacts: [...prev.contacts, contact],
+      };
+    });
   };
 
   render() {
     return (
       <div className="app">
-        <h1>Hello</h1>
+        <h1>Phonebook</h1>
+        <ContactsForm addNewContact={this.onSubmitForm} />
+        <ContactList contacts={this.state.contacts} />
       </div>
     );
   }
