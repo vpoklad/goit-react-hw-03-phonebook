@@ -1,5 +1,8 @@
 import { Component } from 'react';
 import { v4 as uuid } from 'uuid';
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
+import s from './ContactsForm.module.css';
 
 export default class ContactsForm extends Component {
   state = {
@@ -31,35 +34,46 @@ export default class ContactsForm extends Component {
     this.props.addNewContact(contact);
   };
   render() {
+    const { handleSubmit, handleInput } = this;
+    const { name, number } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="name">
+      <form className={s.form} onSubmit={handleSubmit}>
+        <label className={s.label} htmlFor="name">
           Name
           <input
-            onChange={this.handleInput}
+            onChange={handleInput}
             id="name"
             type="text"
             name="name"
-            value={this.state.name}
+            value={name}
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
             required
           />
         </label>
-        Number
-        <label htmlFor="number">
+
+        <label htmlFor="number" className={s.label}>
+          Number
           <input
-            onChange={this.handleInput}
+            onChange={handleInput}
             id="number"
-            value={this.state.number}
+            value={number}
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
             required
-          />{' '}
+          />
         </label>
-        <button type="submit">Add contact</button>
+        <Button
+          variant="contained"
+          type="submit"
+          size="small"
+          endIcon={<SendIcon />}
+        >
+          Add contact
+        </Button>
+        {/* <button type="submit">Add contact</button> */}
       </form>
     );
   }

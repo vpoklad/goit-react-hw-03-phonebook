@@ -1,8 +1,9 @@
 import ContactItem from './ContactItem';
+import s from './ContactList.module.css';
 export default function ContactList({ contacts, handleDelItem }) {
   return (
     <>
-      <h2>Contacts</h2>
+      <h2 className={s.title}>Contacts</h2>
       <ul>
         {contacts.map(contact => (
           //       <li key={contact.id}>

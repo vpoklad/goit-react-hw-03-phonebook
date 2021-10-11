@@ -52,7 +52,7 @@ class App extends Component {
       this;
     return (
       <div className="app">
-        <h1>Phonebook</h1>
+        <h1 className="appTitle">Phonebook</h1>
         <ContactsForm addNewContact={onSubmitForm} />
         <Filter value={this.state.filter} handlChange={handlFilterChange} />
         <ContactList
