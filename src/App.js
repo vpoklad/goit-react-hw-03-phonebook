@@ -34,7 +34,12 @@ class App extends Component {
       contact.name.toLocaleLowerCase().includes(filter.toLowerCase()),
     );
   };
-
+  handleDelItem = id => {
+    console.log('del press');
+    this.setState(prev => ({
+      contacts: prev.contacts.filter(contact => contact.id !== id),
+    }));
+  };
   render() {
     return (
       <div className="app">
@@ -44,7 +49,10 @@ class App extends Component {
           value={this.state.filter}
           handlChange={this.handlFilterChange}
         />
-        <ContactList contacts={this.filterContacts()} />
+        <ContactList
+          contacts={this.filterContacts()}
+          handleDelItem={this.handleDelItem}
+        />
       </div>
     );
   }
