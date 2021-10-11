@@ -1,6 +1,7 @@
 // import './App.css';
 
 import { Component } from 'react/cjs/react.production.min';
+import { v4 as uuid } from 'uuid';
 
 class App extends Component {
   state = {
