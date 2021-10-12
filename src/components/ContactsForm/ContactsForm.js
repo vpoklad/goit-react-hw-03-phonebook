@@ -30,9 +30,9 @@ export default class ContactsForm extends Component {
 
     const { name, number } = this.state;
     const contact = {
+      id: uuid(),
       name,
       number,
-      id: uuid(),
     };
     this.setState({ contact });
     this.resetForm();
